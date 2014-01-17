@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/mvdXML_V0-3_style-1.xslt"?>
+<mvd:mvdXML name="buildingSMART international MVD's" uuid="4afb1a8b-0b61-4ff8-9863-c10690fe06f2" xmlns:mvd="http://buildingsmart-tech.org/mvdXML/mvdXML1-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsmart-tech.org/mvdXML/mvdXML1-1 ../xsd/mvdXML_V1-1_draft.xsd">
+	<mvd:Templates>
+		<mvd:ConceptTemplate uuid="02eefcc6-b26c-4f20-9c7c-c30ae74eb9a9" code="bSI-100" name="Aggregation" version="1.0" status="draft" 
+			owner="buildingSMART International" applicableSchema="IFC2x3">
+			<mvd:Definitions>
+				<mvd:Definition>
+					<mvd:Body lang="en">
+<![CDATA[<p>Provision of an aggregation structure (or decomposition tree) of physical elments, where the <em>&quot;element&quot;</em> is either the whole or one of the parts of an aggregated structure.</p>
+<p style="margin-left: 40px;">Note: The <em>Aggregation </em>concept is specific to the compositon and decomposition of physical elements. There is no order applied among the parts. Beside the decomposition tree structure, the sub concepts also determine the correct assignment of shape, geometry, property set and other information to either the whole or the parts.</p>
+<p>The shape representation of the whole is constructed from the sum of the shape representations of the parts.</p>]]>
+					</mvd:Body>
+					<mvd:Link lang="en" category="agreement" title="CV-2x3-119" 
+						href="http://buildingsmart-tech.org/developers/ifc-implementation/ifc-impl-agreements/cv-2x3-119" xsi:nil="true"/>
+					<mvd:Link lang="en" category="agreement" title="CV-2x3-120" 
+						href="http://buildingsmart-tech.org/developers/ifc-implementation/ifc-impl-agreements/cv-2x3-120" xsi:nil="true"/>
+					<mvd:Link lang="en" category="agreement" title="CV-2x3-121" 
+						href="http://buildingsmart-tech.org/developers/ifc-implementation/ifc-impl-agreements/cv-2x3-121" xsi:nil="true"/>
+				</mvd:Definition>
+			</mvd:Definitions>
+			<mvd:SubTemplates>
+				<mvd:ConceptTemplate uuid="f6c8ea4c-e0aa-422c-a852-a1711a20d228" code="bSI-101" name="Decomposition" status="draft" version="1.0" 
+					owner="buildingSMART International" applicableSchema="IFC2x3">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+<![CDATA[<p>Provision of an aggregation structure where the <em>&quot;element&quot;</em>, representing the aggregate, is decomposed into parts represented by other elements. The <em>&quot;element&quot;</em> establishes the common object coordinate system to which the parts are placed relative. The <em>&quot;element&quot;</em> shape representation is constructed out of the shape representations of its parts.</p><p style="margin-left: 40px;">Note: On import the decomposition structure may not need to be preserved. The parts may either merged into the <em>&quot;element&quot;</em>, or may become independent parts. The shape representation and property information however has to be preserved.</p>]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+				</mvd:ConceptTemplate>
+				<mvd:ConceptTemplate uuid="1b79f477-5787-4565-a60e-5fa28b756117" code="bSI-101" name="Composition" status="draft" version="1.0" 
+					owner="buildingSMART International" applicableSchema="IFC2x3">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+<![CDATA[<p>Provision of an aggregation structure where the <em>&quot;element&quot;</em> is part of another element representing the aggregate. The <em>&quot;element&quot;</em> then provides the partial shape representation and it is positioned relative to the aggregate.</p>]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+				</mvd:ConceptTemplate>
+			</mvd:SubTemplates>
+		</mvd:ConceptTemplate>
+		<mvd:ConceptTemplate uuid="32497bb6-8a8f-4e98-91ac-d512432764db" code="bSI-104" name="Classification" version="1.0" status="draft" 
+			owner="buildingSMART International" applicableSchema="IFC2x3">
+			<mvd:Definitions>
+				<mvd:Definition>
+					<mvd:Body lang="en">
+<![CDATA[p>Provision of a classification reference as an link to an classification items and corresponding external classification system for the <em>&quot;element&quot;</em>. There can be more than one classification reference be provided for the <em>&quot;element&quot;</em>.</p><p style="margin-left: 40px;">Note: Exchange requirements or local conventions may determine the support of a particular classification system for a certain type of elements.</p><p style="margin-left: 40px;">Note: On import, the classification reference may be shown as a property.</p>]]>
+					</mvd:Body>
+				</mvd:Definition>
+			</mvd:Definitions>
+		</mvd:ConceptTemplate>
+	</mvd:Templates>
+	<mvd:Views>
+		<mvd:ModelView uuid="f7c8d778-350f-434b-9195-f183bed35911" name="CoordinationView_V2.0" applicableSchema="IFC2x3" version="0.1">
+			<mvd:Definitions>
+				<mvd:Definition>
+					<mvd:Body lang="en">
+<![CDATA[The Coordination View Version 2.0 supports the design coordination between architectural, building service and structural engineering BIM applications.]]>
+					</mvd:Body>
+				</mvd:Definition>
+			</mvd:Definitions>
+			<mvd:ExchangeRequirements>
+				<mvd:ExchangeRequirement name="Architecture" uuid="48b558c7-c5f4-41d1-9c69-76abecd85187">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+<![CDATA[The Exchange Requirement "Architecture" of the Coordination View Version 2.0 supports the design coordination between architectural application and architecture, building service and structural engineering BIM applications. It identifies the particular export requirements from an architectural application.]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+				</mvd:ExchangeRequirement>
+				<mvd:ExchangeRequirement name="Structural" uuid="61c75d12-11a4-41e5-859a-9890db51d700">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+<![CDATA[The Exchange Requirement "Structural" of the Coordination View Version 2.0 supports the design coordination between structural application and architecture, building service and structural engineering BIM applications. It identifies the particular export requirements from an structural application.]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+				</mvd:ExchangeRequirement>
+				<mvd:ExchangeRequirement name="BuildingService" uuid="0eff7a29-5e02-46fe-acca-8eb40f2dbf72">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+<![CDATA[The Exchange Requirement "BuildingService" of the Coordination View Version 2.0 supports the design coordination between building service application and architecture, building service and structural engineering BIM applications. It identifies the particular export requirements from an building service application.]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+				</mvd:ExchangeRequirement>
+			</mvd:ExchangeRequirements>
+			<mvd:Roots>
+				<mvd:ConceptRoot uuid="30af73bf-3b38-4e4f-91a5-a987eb304cba" name="Beam" applicableRootEntity="IfcBeam">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+<![CDATA[The beam within the Coordination View Version 2.0 represents the architectural and structural design information of beams as a horizontal or nearly horizontal longitudinal structure.]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+					<mvd:Concepts>
+						<mvd:Concept uuid="55078f98-e68b-4f60-9cd1-4b6ffbe877f7" name="Aggregation" version="1.0" owner="buildingSMART International">
+							<mvd:Template ref="02eefcc6-b26c-4f20-9c7c-c30ae74eb9a9"/>
+							<mvd:Definitions>
+								<mvd:Definition>
+									<mvd:Body lang="en"><![CDATA[No further restriction of the concept template defined here.]]></mvd:Body>
+								</mvd:Definition>
+							</mvd:Definitions>
+							<mvd:Requirements>
+								<mvd:Requirement applicability="export" exchangeRequirement="48b558c7-c5f4-41d1-9c69-76abecd85187" requirement="mandatory"/>
+								<mvd:Requirement applicability="export" exchangeRequirement="61c75d12-11a4-41e5-859a-9890db51d700" requirement="mandatory"/>
+								<mvd:Requirement applicability="export" exchangeRequirement="0eff7a29-5e02-46fe-acca-8eb40f2dbf72" requirement="not relevant"/>
+								<mvd:Requirement applicability="import" requirement="mandatory"/>
+							</mvd:Requirements>
+							<mvd:SubConcepts>
+								<mvd:Concept uuid="6bf8ed7b-5d78-4866-8e1d-b3a824f04354" name="Decomposition" version="1.0" owner="buildingSMART International">
+									<mvd:Template ref="f6c8ea4c-e0aa-422c-a852-a1711a20d228"/>
+									<mvd:Definitions>
+										<mvd:Definition>
+											<mvd:Body lang="en">
+<![CDATA[<p>Specific to <em>IfcBeam</em>: An <em>IfcBeam</em> with a composite profile definition is not handled as decomposition.</p><p style="margin-left: 40px;">An example for <em>IfcBeam</em> is an elemented <em>IfcBeam</em> that is decomposed into the <em>IfcBeam</em> section. <em>IfcMember</em>'s, <em>IfcFastener</em>'s, etc.. These decomposed elements have the geometric 'Body' shape representation, whereas the elemented <em>IfcBeam</em> does not have an own 'Body' shape representation.</p>]]>
+											</mvd:Body>
+										</mvd:Definition>
+									</mvd:Definitions>
+									<mvd:Requirements>
+										<mvd:Requirement applicability="export" exchangeRequirement="48b558c7-c5f4-41d1-9c69-76abecd85187" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="61c75d12-11a4-41e5-859a-9890db51d700" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="0eff7a29-5e02-46fe-acca-8eb40f2dbf72" requirement="not relevant"/>
+										<mvd:Requirement applicability="import" requirement="mandatory"/>
+									</mvd:Requirements>
+								</mvd:Concept>
+								<mvd:Concept uuid="0369604b-79f1-40b9-b006-86057a7b4177" name="Composition" version="1.0" owner="buildingSMART International">
+									<mvd:Template ref="1b79f477-5787-4565-a60e-5fa28b756117"/>
+									<mvd:Definitions>
+										<mvd:Definition>
+											<mvd:Body lang="en">
+<![CDATA[<p>No further restriction of the concept template defined here.</p>
+<p style="margin-left: 40px;">An example for <em>IfcBeam</em> is an <em>IfcElementAssembly</em> such as a frame where the <em>IfcBeam</em> is a part of it. The <em>IfcBeam</em> is then positioned relative to this <em>IfcElementAssembly</em> and represents the shape of that part of the assembly.</p>]]>
+											</mvd:Body>
+										</mvd:Definition>
+									</mvd:Definitions>
+									<mvd:Requirements>
+										<mvd:Requirement applicability="export" exchangeRequirement="48b558c7-c5f4-41d1-9c69-76abecd85187" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="61c75d12-11a4-41e5-859a-9890db51d700" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="0eff7a29-5e02-46fe-acca-8eb40f2dbf72" requirement="not relevant"/>
+										<mvd:Requirement applicability="import" requirement="mandatory"/>
+									</mvd:Requirements>
+								</mvd:Concept>
+							</mvd:SubConcepts>
+						</mvd:Concept>
+						<mvd:Concept name="Classification" uuid="4618fd33-e2d2-4f80-a776-cfe000d4d913" owner="buildingSMART International">
+							<mvd:Template ref="32497bb6-8a8f-4e98-91ac-d512432764db"/>
+							<mvd:Definitions>
+								<mvd:Definition>
+									<mvd:Body lang="en"><![CDATA[<p>No further restriction of the concept template defined here.</p>]]></mvd:Body>
+								</mvd:Definition>
+							</mvd:Definitions>
+							<mvd:Requirements>
+								<mvd:Requirement applicability="export" requirement="optional"/>
+								<mvd:Requirement applicability="import" requirement="optional"/>
+							</mvd:Requirements>
+						</mvd:Concept>
+					</mvd:Concepts>
+				</mvd:ConceptRoot>
+				<mvd:ConceptRoot uuid="a9a1bf86-bdf5-4e60-acea-a0ef282f1138" name="Column" applicableRootEntity="IfcColumn">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+<![CDATA[The column within the Coordination View Version 2.0 represents the architectural and structural design information of columns as a vertical or nearly vertical longitudinal structure.]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+					<mvd:Concepts>
+						<mvd:Concept name="Aggregation" uuid="39a535be-cab4-41a8-a1da-33234143e4ab" version="1.0" owner="buildingSMART International">
+							<mvd:Template ref="02eefcc6-b26c-4f20-9c7c-c30ae74eb9a9"/>
+							<mvd:Definitions>
+								<mvd:Definition>
+									<mvd:Body lang="en"><![CDATA[<p>No further restriction of the concept template defined here.</p>]]></mvd:Body>
+								</mvd:Definition>
+							</mvd:Definitions>
+							<mvd:Requirements>
+								<mvd:Requirement applicability="export" exchangeRequirement="48b558c7-c5f4-41d1-9c69-76abecd85187" requirement="mandatory"/>
+								<mvd:Requirement applicability="export" exchangeRequirement="61c75d12-11a4-41e5-859a-9890db51d700" requirement="mandatory"/>
+								<mvd:Requirement applicability="export" exchangeRequirement="0eff7a29-5e02-46fe-acca-8eb40f2dbf72" requirement="not relevant"/>
+								<mvd:Requirement applicability="import" requirement="mandatory"/>
+							</mvd:Requirements>
+							<mvd:SubConcepts>
+								<mvd:Concept name="Decomposition" uuid="c3d31efb-4c99-4ff6-9038-0e78b6d96eb2" version="1.0" owner="buildingSMART International">
+									<mvd:Template ref="f6c8ea4c-e0aa-422c-a852-a1711a20d228"/>
+									<mvd:Definitions>
+										<mvd:Definition>
+											<mvd:Body lang="en"><![CDATA[<p>Specific to <em>IfcColumn</em>: An <em>IfcColumn</em> with a composite profile definition is not handled as decomposition.</p><p style="margin-left: 40px;">An example for <em>IfcColumn</em> is an elemented <em>IfcColumn</em> that is decomposed into the <em>IfcColumn</em> section. <em>IfcMember</em>'s, <em>IfcFastener</em>'s, etc. These decomposed elements have the geometric 'Body' shape representation, whereas the elemented <em>IfcColumn</em> does not have an own 'Body' shape representation.</p>]]></mvd:Body>
+										</mvd:Definition>
+									</mvd:Definitions>
+									<mvd:Requirements>
+										<mvd:Requirement applicability="export" exchangeRequirement="48b558c7-c5f4-41d1-9c69-76abecd85187" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="61c75d12-11a4-41e5-859a-9890db51d700" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="0eff7a29-5e02-46fe-acca-8eb40f2dbf72" requirement="not relevant"/>
+										<mvd:Requirement applicability="import" requirement="mandatory"/>
+									</mvd:Requirements>
+								</mvd:Concept>
+								<mvd:Concept name="Composition" uuid="feb4f32b-57dd-4b0e-83cf-23837b134838" version="1.0" owner="buildingSMART International">
+									<mvd:Template ref="1b79f477-5787-4565-a60e-5fa28b756117"/>
+									<mvd:Definitions>
+										<mvd:Definition>
+											<mvd:Body lang="en">
+<![CDATA[<p>No further restriction of the concept template defined here.</p>
+<p style="margin-left: 40px;">An example for <em>IfcColumn</em> is an <em>IfcElementAssembly</em> such as a frame where the <em>IfcColumn</em> is a part of it. The <em>IfcColumn</em> is then positioned relative to this <em>IfcElementAssembly</em> and represents the shape of that part of the assembly.</p>]]>
+											</mvd:Body>
+										</mvd:Definition>
+									</mvd:Definitions>
+									<mvd:Requirements>
+										<mvd:Requirement applicability="export" exchangeRequirement="48b558c7-c5f4-41d1-9c69-76abecd85187" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="61c75d12-11a4-41e5-859a-9890db51d700" requirement="mandatory"/>
+										<mvd:Requirement applicability="export" exchangeRequirement="0eff7a29-5e02-46fe-acca-8eb40f2dbf72" requirement="not relevant"/>
+										<mvd:Requirement applicability="import" requirement="mandatory"/>
+									</mvd:Requirements>
+								</mvd:Concept>
+							</mvd:SubConcepts>
+						</mvd:Concept>
+						<mvd:Concept name="Classification" uuid="4e204527-edac-4279-8397-35a934e448a8" version="1.0" owner="buildingSMART International">
+							<mvd:Template ref="32497bb6-8a8f-4e98-91ac-d512432764db"/>
+							<mvd:Definitions>
+								<mvd:Definition>
+									<mvd:Body lang="en"><![CDATA[<p>No further restriction of the concept template defined here.</p>]]></mvd:Body>
+								</mvd:Definition>
+							</mvd:Definitions>
+							<mvd:Requirements>
+								<mvd:Requirement applicability="export" exchangeRequirement="48b558c7-c5f4-41d1-9c69-76abecd85187" requirement="mandatory"/>
+								<mvd:Requirement applicability="export" exchangeRequirement="61c75d12-11a4-41e5-859a-9890db51d700" requirement="mandatory"/>
+								<mvd:Requirement applicability="export" exchangeRequirement="0eff7a29-5e02-46fe-acca-8eb40f2dbf72" requirement="not relevant"/>
+								<mvd:Requirement applicability="import" requirement="optional"/>
+							</mvd:Requirements>
+						</mvd:Concept>
+					</mvd:Concepts>
+				</mvd:ConceptRoot>
+			</mvd:Roots>
+		</mvd:ModelView>
+	</mvd:Views>
+</mvd:mvdXML>

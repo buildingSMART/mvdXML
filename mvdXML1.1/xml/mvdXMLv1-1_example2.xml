@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/mvdXML_V0-3_style-1.xslt"?>
+<mvd:mvdXML name="buildingSMART international MVD's" uuid="4afb1a8b-0b61-4ff8-9863-c10690fe06f2" xmlns:mvd="http://buildingsmart-tech.org/mvdXML/mvdXML1-1" xmlns="http://buildingsmart-tech.org/mvdXML/mvdXML1-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsmart-tech.org/mvdXML/mvdXML1-1 ../xsd/mvdXML_V1-1_draft.xsd">
+	<mvd:Templates>
+		<ConceptTemplate uuid="3bf716df-3990-4bfc-8045-9e4011c9b622" name="Axis Geometry" status="" applicableSchema="IFC4" applicableEntity="IfcElement">
+			<Definitions>
+				<Definition>
+					<Body><![CDATA[<p>Elements following a path provide an 'Axis' representation indicating a line segment or any arbitrary open bounded curve. Examples of such elements include walls, beams, columns, pipes, ducts, and cables. </p>]]></Body>
+				</Definition>
+			</Definitions>
+			<Rules>
+				<AttributeRule AttributeName="Representation" Cardinality="One">
+					<EntityRules>
+						<EntityRule EntityName="IfcProductDefinitionShape" Cardinality="_asSchema">
+							<AttributeRules>
+								<AttributeRule AttributeName="Representations" Cardinality="One">
+									<EntityRules>
+										<EntityRule EntityName="IfcShapeRepresentation" Cardinality="_asSchema">
+											<AttributeRules>
+												<AttributeRule AttributeName="ContextOfItems" Cardinality="_asSchema">
+													<EntityRules>
+														<EntityRule EntityName="IfcGeometricRepresentationContext" Cardinality="_asSchema">
+													</EntityRule>
+													</EntityRules>
+												</AttributeRule>
+												<AttributeRule AttributeName="RepresentationIdentifier" Cardinality="One">
+													<EntityRules>
+														<EntityRule EntityName="IfcLabel" Cardinality="_asSchema"/>
+													</EntityRules>
+													<Constraints>
+														<Constraint Expression="[Value]='Axis'"/>
+													</Constraints>
+												</AttributeRule>
+												<AttributeRule RuleID="RepresentationType" AttributeName="RepresentationType" Cardinality="One">
+													<EntityRules>
+														<EntityRule EntityName="IfcLabel" Cardinality="_asSchema"/>
+													</EntityRules>
+													<Constraints>
+														<Constraint Expression="[Value]='Curve3D'"/>
+													</Constraints>
+												</AttributeRule>
+												<AttributeRule RuleID="Geometry" AttributeName="Items" Cardinality="_asSchema">
+													<EntityRules>
+														<EntityRule RuleID="" EntityName="IfcBoundedCurve" Cardinality="_asSchema">
+															<AttributeRules>
+																<AttributeRule AttributeName="StyledByItem" Cardinality="ZeroToOne">
+																	<EntityRules>
+																		<EntityRule EntityName="IfcStyledItem" Cardinality="_asSchema">
+																			<AttributeRules>
+																				<AttributeRule AttributeName="Styles" Cardinality="_asSchema">
+																					<EntityRules>
+																						<EntityRule EntityName="IfcCurveStyle" Cardinality="_asSchema">
+																					</EntityRule>
+																					</EntityRules>
+																				</AttributeRule>
+																			</AttributeRules>
+																		</EntityRule>
+																	</EntityRules>
+																</AttributeRule>
+															</AttributeRules>
+														</EntityRule>
+													</EntityRules>
+												</AttributeRule>
+											</AttributeRules>
+										</EntityRule>
+									</EntityRules>
+								</AttributeRule>
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+			</Rules>
+		</ConceptTemplate>
+	</mvd:Templates>
+</mvd:mvdXML>

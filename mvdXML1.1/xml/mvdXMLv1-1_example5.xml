@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/mvdXML_V0-3_style-1.xslt"?>
+<mvd:mvdXML name="buildingSMART international MVD's" uuid="4afb1a8b-0b61-4ff8-9863-c10690fe06f2" xmlns:mvd="http://buildingsmart-tech.org/mvdXML/mvdXML1-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsmart-tech.org/mvdXML/mvdXML1-1 ../xsd/mvdXML_V1-1_draft.xsd">
+	<mvd:Templates>
+		<mvd:ConceptTemplate uuid="bafc93b7-d0e2-42d8-84cf-5da20ee1480a" code="" name="Port" applicableSchema="IFC4" 	applicableEntity="IfcDistributionElement">
+			  <mvd:Definitions>
+				<mvd:Definition >
+				  <mvd:Body>
+		<![CDATA[<p>Distribution ports are defined by <i>IfcDistributionPort</i> and attached by the <i>IfcRelNests</i> relationship. Ports are specific to the PredefinedType as follows indicated by the <i>IfcDistributionPort</i> <i>Name</i>, <i>PredefinedType</i>, and <i>FlowDirection</i>:</p>]]>
+				  </mvd:Body>
+				</mvd:Definition>
+			  </mvd:Definitions>
+			  <mvd:Rules>
+				<mvd:AttributeRule AttributeName="PredefinedType" RuleID="PredefinedType"/>
+				<mvd:AttributeRule AttributeName="IsNestedBy" >
+				  <mvd:EntityRules>
+					<mvd:EntityRule EntityName="IfcRelNests" >
+					  <mvd:AttributeRules>
+						<mvd:AttributeRule AttributeName="RelatedObjects" >
+						  <mvd:EntityRules>
+							<mvd:EntityRule EntityName="IfcDistributionPort" RuleID="Port">
+							  <mvd:AttributeRules>
+								<mvd:AttributeRule AttributeName="Name" RuleID="Name"/>
+								<mvd:AttributeRule AttributeName="PredefinedType" RuleID="Type"/>
+								<mvd:AttributeRule AttributeName="FlowDirection" RuleID="Flow"/>
+							  </mvd:AttributeRules>
+							</mvd:EntityRule>
+						  </mvd:EntityRules>
+						</mvd:AttributeRule>
+					  </mvd:AttributeRules>
+					</mvd:EntityRule>
+				  </mvd:EntityRules>
+				</mvd:AttributeRule>
+			  </mvd:Rules>
+			</mvd:ConceptTemplate>
+	</mvd:Templates>
+	<mvd:Views>
+		<mvd:ModelView uuid="f7c8d778-350f-434b-9195-f183bed35911" name="ExampleView" applicableSchema="IFC4" version="0.1">
+			<mvd:Definitions>
+				<mvd:Definition>
+					<mvd:Body lang="en">
+						<![CDATA[The ExampleView shows the use of mvdXML.]]>
+					</mvd:Body>
+				</mvd:Definition>
+			</mvd:Definitions>
+			<mvd:ExchangeRequirements>
+				<mvd:ExchangeRequirement name="ER1" uuid="48b558c7-c5f4-41d1-9c69-76abecd85187">
+					<mvd:Definitions>
+						<mvd:Definition>
+							<mvd:Body lang="en">
+								<![CDATA[The Exchange Requirement 1 is an example.]]>
+							</mvd:Body>
+						</mvd:Definition>
+					</mvd:Definitions>
+				</mvd:ExchangeRequirement>
+			</mvd:ExchangeRequirements>
+			<mvd:Roots>
+				<mvd:ConceptRoot uuid="8b949664-a5df-4bfc-922c-4a486c41d756" name="Sensor" applicableRootEntity="IfcSensor">
+				  <mvd:Definitions>
+					<mvd:Definition>
+					  <mvd:Body>
+					  <![CDATA[<p>A sensor is a device that measures a physical quantity and converts it into a signal which can be read by an observer or by an instrument.</p>]]>
+					  </mvd:Body>
+					</mvd:Definition>
+				  </mvd:Definitions>
+				  <mvd:Concepts>
+					<mvd:Concept uuid="a4fa348c-a025-4a02-abfd-c42fd0901540" name="Port">
+					  <mvd:Template ref="bafc93b7-d0e2-42d8-84cf-5da20ee1480a"/>
+					  <mvd:Rules>
+						<mvd:TemplateRule RuleID="Port" Parameters="Name='Output' AND Type='SIGNAL' AND Flow='SOURCE'" Description="Transmits signal."/>
+					  </mvd:Rules>
+					</mvd:Concept>
+				  </mvd:Concepts>
+				</mvd:ConceptRoot>
+			</mvd:Roots>
+		</mvd:ModelView>
+	</mvd:Views>
+</mvd:mvdXML>

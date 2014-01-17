@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/mvdXML_V0-3_style-1.xslt"?>
+<mvd:mvdXML name="buildingSMART international MVD's" uuid="4afb1a8b-0b61-4ff8-9863-c10690fe06f2" xmlns:mvd="http://buildingsmart-tech.org/mvdXML/mvdXML1-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsmart-tech.org/mvdXML/mvdXML1-1 ../xsd/mvdXML_V1-1_draft.xsd">
+	<mvd:Templates>
+		<mvd:ConceptTemplate uuid="abcd1234-d0e2-42d8-84cf-5da20ee1480a" code="" name="Beam" applicableSchema="IFC4" applicableEntity="IfcBeam">
+		  <mvd:Rules>
+			<mvd:AttributeRule AttributeName="HasAssociations" >
+			  <mvd:EntityRules>
+				<mvd:EntityRule EntityName="IfcRelAssociatesMaterial" >
+				  <mvd:AttributeRules>
+					<mvd:AttributeRule AttributeName="RelatedMaterial" >
+					  <mvd:EntityRules>
+						<mvd:EntityRule EntityName="IfcMaterialProfileSetUsage">
+						  <mvd:AttributeRules>
+							<mvd:AttributeRule AttributeName="MaterialProfile" RuleID="MP">
+							</mvd:AttributeRule>
+						  </mvd:AttributeRules>
+						</mvd:EntityRule>
+					  </mvd:EntityRules>
+					</mvd:AttributeRule>
+				  </mvd:AttributeRules>
+				</mvd:EntityRule>
+			  </mvd:EntityRules>
+			</mvd:AttributeRule>
+			<mvd:AttributeRule AttributeName="Representation" >
+			  <mvd:EntityRules>
+				<mvd:EntityRule EntityName="IfcProductDefinitionShape" >
+				  <mvd:AttributeRules>
+					<mvd:AttributeRule AttributeName="Representations" >
+					  <mvd:EntityRules>
+						<mvd:EntityRule EntityName="IfcShapeRepresentation">
+						  <mvd:AttributeRules>
+							<mvd:AttributeRule AttributeName="RepresentationIdentifier">
+							  <mvd:Constraints>
+								<mvd:Constraint Expression="[Value]='Body'"/>
+							  </mvd:Constraints>
+							</mvd:AttributeRule>
+							<mvd:AttributeRule AttributeName="RepresentationType">
+							  <mvd:Constraints>
+								<mvd:Constraint Expression="[Value]='SweptSolid'"/>
+							  </mvd:Constraints>
+							</mvd:AttributeRule>
+							<mvd:AttributeRule AttributeName="Items">
+							  <mvd:EntityRules>
+								<mvd:EntityRule EntityName="IfcExtrudedAreaSolid">
+								  <mvd:AttributeRules>
+									<mvd:AttributeRule AttributeName="SweptProfile">
+									  <mvd:Constraints>
+										<mvd:Constraint Expression="[Value]=MP[Value]"/>
+									  </mvd:Constraints>
+									</mvd:AttributeRule>
+								  </mvd:AttributeRules>
+								</mvd:EntityRule>
+							  </mvd:EntityRules>
+							</mvd:AttributeRule>
+						  </mvd:AttributeRules>
+						</mvd:EntityRule>
+					  </mvd:EntityRules>
+					</mvd:AttributeRule>
+				  </mvd:AttributeRules>
+				</mvd:EntityRule>
+			  </mvd:EntityRules>
+			</mvd:AttributeRule>
+		  </mvd:Rules>
+		</mvd:ConceptTemplate>
+	</mvd:Templates>
+</mvd:mvdXML>
