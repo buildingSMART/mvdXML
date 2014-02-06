@@ -195,7 +195,7 @@
 			<xs:element name="BaseConcept" type="mvd:GenericReference" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="mvd:identity"/>
-		<xs:attribute name="Override" type="xs:boolean" use="optional"/>
+		<xs:attribute name="override" type="xs:boolean" use="optional"/>
 	</xs:complexType>
 	<xs:element name="ExchangeRequirement" type="mvd:ExchangeRequirement"/>
 	<xs:complexType name="ExchangeRequirement">
