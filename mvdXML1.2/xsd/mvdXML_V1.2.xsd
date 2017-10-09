@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Mit XMLSpy v2015 sp2 (x64) (http://www.altova.com) von Thomas Liebich (AEC3 Deutschland GmbH) bearbeitet -->
-<xs:schema xmlns:mvd="http://buildingsmart-tech.org/mvd/XML/1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart-tech.org/mvd/XML/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+<xs:schema xmlns:mvd="http://buildingsmart-tech.org/mvd/XML/1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://buildingsmart-tech.org/mvd/XML/1.2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2">
 	<xs:annotation>
 		<xs:documentation>Change Log: 
         1.2 draft:
           schema extensions
-            
+						namespace - updated to: http://buildingsmart-tech.org/mvd/XML/1.2
+            ModelView.Views - new collection that allows for hierarchical nesting of model views, where the outer view implicitly contains all content of inner views.
+            TemplateRule.Requirements - new collection for overriding requirements for template, such as for a specific property within a property set.
+            TemplateRule.References - new collection for representing nested template parameters, such as for properties within a property set.
+            TemplateRule.Order - new attribute for indicating order of rule for interleaving with rules from other concepts, such as used for properties of different types.
+            TemplateRule.Usage - new attribute for capturing usage implications, such as for data within a COBie spreadsheet.
 				1.1 final-add1:
 					schema changes
 						concept.TemplateRules changed from mandatory to optional - It is allowed to have concepts without further configuration via template rules. In that case it is expected that the referenced concept template validates to true.
@@ -309,7 +314,21 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-		</xs:sequence>
+      <xs:element name="Views" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>a list of nested model view definitions, that contains the necessary entities and associated concepts to define the sub schema of the base schema to support the exchange requirements</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="mvd:ModelView" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>The ModelView element is the description of a Model View Definition (MVD), it is specific to an IFC schema release and contains one-to-many concept roots. It includes the reference to zero-to-many applicable exchange requirements.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>      
 		<xs:attributeGroup ref="mvd:identity"/>
 		<xs:attribute name="applicableSchema" type="mvd:schemaName" use="required"/>
 	</xs:complexType>
@@ -371,16 +390,48 @@
 		<xs:attribute name="baseConcept" type="mvd:uuid" use="optional"/>
 		<xs:attribute name="override" type="xs:boolean" use="optional" default="false"/>
 	</xs:complexType>
+  <xs:element name="TemplateRule" type="mvd:TemplateRule">
+  </xs:element>
+  <xs:complexType name="TemplateRule">
+    <xs:sequence>
+      <xs:element name="Requirements" type="mvd:Requirements" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="References" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>List of referenced inner concepts defined within scope of the template rule.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="mvd:Concept" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Each Concept indicates use of a particular template for the applicable instance referenced at the template rule.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Description" type="xs:string" use="optional"/>
+    <xs:attribute name="Parameters" type="xs:string" use="required"/>
+    <xs:attribute name="Order" type="xs:integer" use="optional"/>
+    <xs:attribute name="Usage" type="xs:string" use="optional">
+      <!-- new attribute to define usage for data merging purposes. -->
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="required"/>
+          <xs:enumeration value="optional"/>
+          <xs:enumeration value="key"/>
+          <xs:enumeration value="reference"/>
+          <xs:enumeration value="system"/>
+          <xs:enumeration value="calculation"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>>
+  </xs:complexType>
 	<xs:element name="TemplateRules" type="mvd:TemplateRules"/>
 	<xs:complexType name="TemplateRules">
 		<xs:choice maxOccurs="unbounded">
 			<xs:element ref="mvd:TemplateRules"/>
-			<xs:element name="TemplateRule">
-				<xs:complexType>
-					<xs:attribute name="Parameters" type="xs:string" use="required"/>
-					<xs:attribute name="Description" type="xs:string" use="optional"/>
-				</xs:complexType>
-			</xs:element>
+			<xs:element ref="mvd:TemplateRule"/>
 		</xs:choice>
 		<xs:attribute name="operator">
 			<!-- new attribute to define the logical combination of rules underneath the Rules sequence -->
