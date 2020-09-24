@@ -12,9 +12,9 @@ boolean_term
 parameter 
 	:	SIMPLEID ;
 metric 	
-	:	'[Value]' | '[Size]' | '[Type]' | '[Unique]';
+	:	'[Value]' | '[Size]' | '[Type]' | '[Unique]' | '[Exists]';
 logical_interconnection 
-	:	AND | OR | XOR ;
+	:	AND | OR | XOR  | NAND | NOR | NXOR ; ;
 operator 
 	:	EQUAL | NOT_EQUAL | GREATER_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN | LESS_THAN_OR_EQUAL;
 value 	
@@ -39,6 +39,12 @@ OR
 	:	'OR' | 'or' | '|' ;
 XOR 	
 	:	'XOR' | 'xor' ;
+NAND   
+	:	'NAND' | 'nand' ; 
+NOR   
+	:	'NOR' | 'nor' ; 
+NXOR   
+	:	'NXOR' | 'nxor' ; 
 EQUAL 	
 	:	'=' ;
 NOT_EQUAL 
