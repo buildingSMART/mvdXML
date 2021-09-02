@@ -5,7 +5,7 @@ Goals: <br>
 <ul>
   <li>
   finalize mvdXML 1.1 specification and support implementation<br>
-  More info on http://www.buildingsmart-tech.org/specifications/mvd-overview/mvd-overview-summary
+  More info on https://technical.buildingsmart.org/standards/ifc/mvd/mvdxml/
   </li>
 </ul>
 <ul>
