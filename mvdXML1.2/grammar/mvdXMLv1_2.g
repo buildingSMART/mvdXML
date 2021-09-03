@@ -6,15 +6,15 @@ grammar mvdXMLv1_2;
 expression 
 	:	boolean_expression ;
 boolean_expression
-    	:	boolean_term (logical_interconnection boolean_term)*  ;
+    :	(NOT) boolean_term (logical_interconnection (NOT) boolean_term)*  ;
 boolean_term
 	:	(( parameter ( metric )? | metric ) operator ( value | parameter ( metric )? ) )  |  ( LPAREN boolean_expression RPAREN );
 parameter 
-	:	SIMPLEID ;
+	:	SIMPLEID | 'SELF' ;
 metric 	
-	:	'[Value]' | '[Size]' | '[Type]' | '[Unique]';
+	:	'[Value]' | '[Size]' | '[Type]' | '[Unique]' | '[Exists]' ;
 logical_interconnection 
-	:	AND | OR | XOR ;
+	:	AND | OR | XOR | NAND | NOR | NXOR ;
 operator 
 	:	EQUAL | NOT_EQUAL | GREATER_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN | LESS_THAN_OR_EQUAL;
 value 	
@@ -33,13 +33,19 @@ sign
 /*----------------
 * LEXER RULES
 *----------------*/
-AND 	
+AND
 	:	'AND' | 'and' | '&' | ';' ;
-OR 	
+OR
 	:	'OR' | 'or' | '|' ;
-XOR 	
+XOR
 	:	'XOR' | 'xor' ;
-EQUAL 	
+NAND
+	:	'NAND' | 'nand' ;
+NOR
+	:	'NOR' | 'nor' ;
+NXOR
+	:	'NXOR' | 'nxor' ;
+EQUAL
 	:	'=' ;
 NOT_EQUAL 
 	:	'!=' ;
@@ -68,15 +74,15 @@ LETTER
 SIMPLEID 
 	:	LETTER ( LETTER | DIGIT | '_' )* ;    
 LPAREN  
-	:   	'(';
+	:   '(';
 RPAREN  
-	:   	')';  
+	:   ')';  
 OCTAL_ESC
-	:   	'\\' ('0'..'3') ('0'..'7') ('0'..'7')   |   '\\' ('0'..'7') ('0'..'7')   |   '\\' ('0'..'7')  ;
+	:   '\\' ('0'..'3') ('0'..'7') ('0'..'7')   |   '\\' ('0'..'7') ('0'..'7')   |   '\\' ('0'..'7')  ;
 UNICODE_ESC
-	:   	'\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT ;
+	:   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT ;
 ESC_SEQ
-    	:   	'\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')  |   UNICODE_ESC  |   OCTAL_ESC ;
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')  |   UNICODE_ESC  |   OCTAL_ESC ;
 STRING	
 	:  	'\'' ( ESC_SEQ | ~('\\'|'\'') )* '\'';
 WS 	
