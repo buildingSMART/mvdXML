@@ -45,6 +45,8 @@ NOR
 	:	'NOR' | 'nor' ;
 NXOR
 	:	'NXOR' | 'nxor' ;
+NOT
+	:	'NOT' | 'not' | '!';
 EQUAL
 	:	'=' ;
 NOT_EQUAL 
