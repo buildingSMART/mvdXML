@@ -53,6 +53,18 @@ letter
 /*----------------
 * LEXER RULES
 *----------------*/
+EQUAL
+    :    '=' ;
+NOT_EQUAL 
+    :    '!=' ;
+GREATER_THAN_OR_EQUAL 
+    :    '>=' ;
+GREATER_THAN 
+    :    '>' ; 
+LESS_THAN_OR_EQUAL 
+    :    '<=' ;
+LESS_THAN 
+    :    '<' ;
 AND
     :    'AND' | 'and' | '&' | ';' ;
 OR
@@ -77,18 +89,6 @@ UNIQUE
     :    '[' ('U'|'u') ('nique'|'NIQUE') ']' ;
 EXISTS
     :    '[' ('E'|'e') ('xists'|'XISTS') ']' ;
-EQUAL
-    :    '=' ;
-NOT_EQUAL 
-    :    '!=' ;
-GREATER_THAN_OR_EQUAL 
-    :    '>=' ;
-GREATER_THAN 
-    :    '>' ; 
-LESS_THAN_OR_EQUAL 
-    :    '<=' ;
-LESS_THAN 
-    :    '<' ;
 FALSE
     :    'FALSE' | 'false' ;
 TRUE
