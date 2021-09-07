@@ -97,6 +97,8 @@ UNKNOWN
     :    'UNKNOWN' | 'unknown' ;
 REG
     :    'reg';
+SELF
+    :    ( 'S' | 's' ) ( 'ELF' | 'elf' ) ;
 EXP
     :    'e' | 'E';
 PLUS
