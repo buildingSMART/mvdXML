@@ -6,9 +6,9 @@ grammar mvdXMLv1_2;
 expression 
     :    boolean_expression EOF;
 boolean_expression
-    :    ( NOT ) boolean_term (logical_interconnection ( NOT ) boolean_term)*  ;
+    :    boolean_term (logical_interconnection boolean_term)*  ;
 boolean_term
-    :    ( leftside operator rightside )  |  ( LPAREN boolean_expression RPAREN );
+    :    NOT? ( ( leftside operator rightside )  |  ( LPAREN boolean_expression RPAREN ) );
 leftside
     :    parameter_metric | metric;
 rightside
