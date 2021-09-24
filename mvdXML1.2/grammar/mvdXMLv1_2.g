@@ -6,9 +6,9 @@ grammar mvdXMLv1_2;
 expression 
 	:	boolean_expression ;
 boolean_expression
-    :	(NOT) boolean_term (logical_interconnection (NOT) boolean_term)*  ;
+    :	boolean_term (logical_interconnection boolean_term)*  ;
 boolean_term
-	:	(( parameter ( metric )? | metric ) operator ( value | parameter ( metric )? ) )  |  ( LPAREN boolean_expression RPAREN );
+	:	NOT? ((( parameter ( metric )? | metric ) operator ( value | parameter ( metric )? ) )  |  ( LPAREN boolean_expression RPAREN ));
 parameter 
 	:	SIMPLEID | 'SELF' ;
 metric 	
