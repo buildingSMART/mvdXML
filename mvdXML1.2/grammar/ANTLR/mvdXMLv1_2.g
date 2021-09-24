@@ -8,10 +8,10 @@ expression
 boolean_expression
     :    boolean_term (logical_interconnection boolean_term)*  ;
 boolean_term
-    :    NOT? ( ( leftside operator rightside )  |  ( LPAREN boolean_expression RPAREN ) );
-leftside
+    :    NOT? ( ( lhs operator rhs )  |  ( LPAREN boolean_expression RPAREN ) );
+lhs
     :    parameter_metric | metric;
-rightside
+rhs
     :    parameter_metric | value;
 parameter_metric
     :    parameter (metric)?;
