@@ -10,13 +10,13 @@ boolean_expression
 boolean_term
     :    NOT? ( ( leftside operator rightside )  |  ( LPAREN boolean_expression RPAREN ) );
 leftside
-    :    parameter_metric | metric;
+    :    parameter_metric | metric | SELF_TYPE ;
 rightside
     :    parameter_metric | value;
 parameter_metric
     :    parameter (metric)?;
 parameter 
-    :    simple_id | SELF ;
+    :    simple_id ;
 simple_id 
     :    letter ( letter | ZERO | DIGITNONZERO | '_' )* ;
 metric
@@ -97,8 +97,8 @@ UNKNOWN
     :    'UNKNOWN' | 'unknown' ;
 REG
     :    'reg';
-SELF
-    :    ( 'S' | 's' ) ( 'ELF' | 'elf' ) ;
+SELF_TYPE
+    :    'SELF_TYPE' | 'self_type' ;
 EXP
     :    'e' | 'E';
 PLUS
