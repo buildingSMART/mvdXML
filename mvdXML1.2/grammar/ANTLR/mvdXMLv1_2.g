@@ -26,21 +26,21 @@ logical_interconnection
 operator 
     :    EQUAL | NOT_EQUAL | GREATER_THAN_OR_EQUAL | GREATER_THAN | LESS_THAN_OR_EQUAL | LESS_THAN;
 value
-    :    logical_literal | real_literal | regular_expression | string_literal;
+    :    logical_literal | int_literal | real_literal | regular_expression | string_literal;
 logical_literal    
     :    FALSE | TRUE | UNKNOWN ;
 real_literal 
-    :    sign? (trailing | int) (DOT decimal_part)? exp? ;
+    :    sign? (trailing | int_literal) (DOT decimal_part)? exp? ;
 string_literal
     :    STRING ;
 regular_expression
     :    REG STRING ;
-int
+int_literal
     :    DIGITNONZERO (digit)*;
 decimal_part
-    :    trailing? int?;
+    :    trailing? int_literal?;
 exp
-    :    EXP sign int;
+    :    EXP sign int_literal;
 sign
     :    PLUS | MINUS ;
 digit
