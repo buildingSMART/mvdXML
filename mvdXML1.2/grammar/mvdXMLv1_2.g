@@ -18,9 +18,11 @@ logical_interconnection
 operator 
 	:	EQUAL | NOT_EQUAL | GREATER_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN | LESS_THAN_OR_EQUAL;
 value 	
-	:	logical_literal | real_literal | string_literal | regular_expression;
+	:	logical_literal | int_literal | real_literal | string_literal | regular_expression;
 logical_literal	
 	: 	FALSE | TRUE | UNKNOWN ;
+int_literal
+	:	INT;
 real_literal 
 	:	(sign)? ( DIGIT | INT ) ('.')? ( ( DIGIT | INT ) )? ( 'e' (sign)? ( DIGIT | INT ) )? ;
 string_literal
