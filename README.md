@@ -1,15 +1,5 @@
 mvdXML
 =================
 
-Goals: <br>
-<ul>
-  <li>
-  finalize mvdXML 1.1 specification and support implementation<br>
-  More info on https://technical.buildingsmart.org/standards/ifc/mvd/mvdxml/
-  </li>
-</ul>
-<ul>
-  <li>
-  collect requirements for mvdXML 2.0 (next major release)
-  </li>
-</ul>
+With the MVD policy and IDS in place, the mvdXML is only used as internal structure for Software Certification. 
+This repository will be archived soon. 
