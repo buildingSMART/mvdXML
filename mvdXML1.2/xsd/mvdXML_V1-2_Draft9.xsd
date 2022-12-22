@@ -162,7 +162,16 @@
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:group ref="ifc:IfcUnit" maxOccurs="unbounded"/>
+									<xs:element name="Unit">
+										<xs:complexType>
+											<xs:group ref="ifc:IfcUnit"/>
+											<xs:annotation>
+												<xs:documentation>
+													A Unit element of type IfcUnit from the IFC4 specification.
+												</xs:documentation>
+											</xs:annotation>
+										</xs:complexType>
+									</xs:element>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
